@@ -7,6 +7,8 @@ on:
   pull_request:
     branches: [ master ]
     paths: 'dotnet-webapi/'
+  workflow_dispatch:
+    
 env:
   DOTNET_PROJECT_PATH: './dotnet-webapi'
   PUBLISH_PATH: './publish'
