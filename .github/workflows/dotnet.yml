@@ -1,0 +1,38 @@
+name: .NET Build
+
+on:
+  push:
+    branches: [ master ]
+    paths: 'dotnet-webapi/'
+  pull_request:
+    branches: [ master ]
+    paths: 'dotnet-webapi/'
+env:
+  DOTNET_PROJECT_PATH: './dotnet-webapi'
+  PUBLISH_PATH: './publish'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore '${{ env.DOTNET_PROJECT_PATH/dotnet-webapi.csproj }}'
+    - name: Build
+      run: dotnet build '${{ env.DOTNET_PROJECT_PATH/dotnet-webapi.csproj }}' --no-restore
+    - name: Publish
+      run: dotnet publish '${{ env.DOTNET_PROJECT_PATH/dotnet-webapi.csproj }}' -o '${{ env.PUBLISH_PATH }}
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        # Artifact name
+        name: dotnet-webapi-demo
+        # A file, directory or wildcard pattern that describes what to upload
+        path: '${{ env.PUBLISH_PATH }}'
+      
