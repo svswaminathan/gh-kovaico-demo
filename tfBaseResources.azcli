@@ -1,0 +1,16 @@
+# Steps to create the base resources needed for terraform 
+
+# login to azure
+az login
+
+#create resource group
+az group create --location southindia --name rg-kovaico-tfstate
+
+#create storage account
+az storage account create --name stkovaicotfstate --resource-group rg-kovaico-tfstate 
+
+#create storage container
+az storage container create --name stckovaicotfstate --account-name stkovaicotfstate
+
+#create service principal
+az ad sp create-for-rbac --name spn-kovaico-tfstate
