@@ -40,7 +40,7 @@ resource "azurerm_service_plan" "aspkovaicotrial" {
 # Linux web app 
 resource "azurerm_linux_web_app" "webkovaicotrial" {
   name                = "webkovaicotrial"
-  resource_group_name = azurerm_resource_group.aspkovaicotrial.name
+  resource_group_name = azurerm_resource_group.rgkovaicotrial.name
   location            = azurerm_service_plan.aspkovaicotrial.location
   service_plan_id     = azurerm_service_plan.aspkovaicotrial.id
 }
