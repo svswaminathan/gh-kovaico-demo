@@ -5,13 +5,13 @@ on:
     branches:
     - master
     paths:
-    - 'Terraform/'
+    - 'Terraform/**.tf'
   pull_request:
     branches:
     - master
     paths:
-    - 'Terraform/'
-  
+    - 'Terraform/**.tf'
+
 jobs:
   terraform:
     name: 'Terraform Plan'
