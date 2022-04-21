@@ -44,7 +44,5 @@ resource "azurerm_linux_web_app" "webkovaicotrial" {
   location            = azurerm_service_plan.aspkovaicotrial.location
   service_plan_id     = azurerm_service_plan.aspkovaicotrial.id
   site_config {}
-  application_stack {
-    dotnet_version  = "6.0"
-  }
+
 }
