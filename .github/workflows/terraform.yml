@@ -4,8 +4,12 @@ on:
   push:
     branches:
     - master
+    paths:
+    - 'Terraform/'
   pull_request:
-
+    paths:
+    - 'Terraform/'
+  
 jobs:
   terraform:
     name: 'Terraform Plan'
