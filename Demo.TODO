@@ -1,0 +1,15 @@
+☐ Getting started with GitHub Actions
+    - Walkthrough of documentation
+☐ Setting up environment variables & secrets
+☐ Setting up environments & branch protections on environments
+☐ Terraform prerequsites and their setup
+☐ Terraform workflow to run plan for PRs
+☐ Terraform job to run apply for Master branch pushes
+☐ Setting up CI workflow for dotnet application
+☐ Setting up CD to deploy to Azure
+☐ Setting up Deployment to Prod
+    - Create Prod infra 
+    - Setup publish profile as environment secrets
+    - Perform deployment with approvals
+☐ Make code changes to web api and show workflow run in action
+
