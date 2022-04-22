@@ -46,3 +46,8 @@ resource "azurerm_linux_web_app" "webkovaicotrial" {
   site_config {}
 
 }
+
+resource "azurerm_resource_group" "rgkovaicotrial-test" {
+  name     = "rgkovaicotrialtest"
+  location = "southindia"
+}
