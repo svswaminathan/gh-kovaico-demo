@@ -59,5 +59,27 @@ jobs:
         # Applies to Web Apps(Windows and Linux) and Web App Containers(linux). Multi container scenario not supported. Publish profile (*.publishsettings) file contents with Web Deploy secrets
         publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
         package: '${{ env.PUBLISH_PATH }}'
+
+  deploy_to_prod:
+    
+    runs-on:  ubuntu-latest
+    environment: prod
+    needs: deploy_to_dev
+    steps:
+     - name: Download a Build Artifact
+       uses: actions/download-artifact@v2.0.10
+       with:
+        # Artifact name
+        name: dotnet-webapi-demo
+        path: '${{ env.PUBLISH_PATH }}'
+    
+     - name: Azure WebApp
+       uses: Azure/webapps-deploy@v2
+       with:
+        # Name of the Azure Web App
+        app-name: webkovaicodemoprod
+        # Applies to Web Apps(Windows and Linux) and Web App Containers(linux). Multi container scenario not supported. Publish profile (*.publishsettings) file contents with Web Deploy secrets
+        publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
+        package: '${{ env.PUBLISH_PATH }}'
     
       
