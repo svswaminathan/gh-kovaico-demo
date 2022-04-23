@@ -44,10 +44,32 @@ resource "azurerm_linux_web_app" "webkovaicotrial" {
   location            = azurerm_service_plan.aspkovaicotrial.location
   service_plan_id     = azurerm_service_plan.aspkovaicotrial.id
   site_config {}
-
 }
 
 resource "azurerm_resource_group" "rgkovaicotrial-test" {
   name     = "rgkovaicotrialtest"
   location = "southindia"
+}
+
+resource "azurerm_resource_group" "rgkovaicodemo-prod" {
+  name     = "rgkovaicodemo-prod"
+  location = "southindia"
+}
+
+# App service plan
+resource "azurerm_service_plan" "aspkovaicodemoprod" {
+  name                = "aspkovaicodemoprod"
+  resource_group_name = azurerm_resource_group.rgkovaicodemo-prod.name
+  location            = "South India"
+  os_type             = "Linux"
+  sku_name            = "P1v2"
+}
+
+# Linux web app 
+resource "azurerm_linux_web_app" "webkovaicodemoprod" {
+  name                = "webkovaicodemoprod"
+  resource_group_name = azurerm_resource_group.rgkovaicodemo-prod.name
+  location            = azurerm_service_plan.aspkovaicodemoprod.location
+  service_plan_id     = azurerm_service_plan.aspkovaicodemoprod.id
+  site_config {}
 }
