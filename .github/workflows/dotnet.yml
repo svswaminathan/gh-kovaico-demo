@@ -3,10 +3,10 @@ name: .NET Build
 on:
   push:
     branches: [ master ]
-    paths: 'dotnet-webapi/'
+    paths: ['dotnet-webapi/**.cs'] 
   pull_request:
     branches: [ master ]
-    paths: 'dotnet-webapi/'
+    paths: ['dotnet-webapi/**.cs']
   workflow_dispatch:
     
 env:
